@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexControl {
 
-    @RequestMapping("/")
-    private String index(){
-        return "redirect:/design";
-    }
+//    @RequestMapping("/")
+//    private String index(){
+//        return "redirect:/design";
+//    }
 }
