@@ -3,6 +3,7 @@ package com.example.springboottest.data;
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
+import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -11,8 +12,12 @@ import java.util.Date;
 import java.util.List;
 
 @Data
+@Entity
+@Table(name="taco_order")
 public class Order {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
     private Date placedAt;
@@ -43,6 +48,7 @@ public class Order {
     private String ccCVV;
 
     //
+    @ManyToMany(targetEntity=Taco.class)
     private List<Taco> tacoList=new ArrayList<>();
 
     public void addDesign(Taco savedTaco) {
@@ -51,5 +57,10 @@ public class Order {
 
     public List<Taco> getTacos() {
         return tacoList;
+    }
+
+    @PrePersist
+    void placedAt() {
+        this.placedAt = new Date();
     }
 }

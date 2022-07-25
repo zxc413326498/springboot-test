@@ -29,8 +29,11 @@ public class TacoDaoImpl extends BaseDao implements TacoDao {
     public Taco save(Taco taco) {
         long tacoId=saveTacoInfo(taco);
         taco.setId(tacoId);
-        for (String str:taco.getIngredients()){
-            Ingredient ingredient=new Ingredient(str,null,null);
+//        for (String str:taco.getIngredients()){
+//            Ingredient ingredient=new Ingredient(str,null,null);
+//            saveIngredientToTaco(ingredient,tacoId);
+//        }
+        for (Ingredient ingredient:taco.getIngredients()){
             saveIngredientToTaco(ingredient,tacoId);
         }
         return taco;

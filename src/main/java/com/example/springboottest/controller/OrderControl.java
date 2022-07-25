@@ -41,7 +41,7 @@ public class OrderControl {
             return "orderForm";
         }
         orderDao.save(order);
-        //
+        //标记当前业务已经完成，可以清理session中的order数据了，不然会造成数据混淆
         sessionStatus.setComplete();
 
         log.info("Order submitted: " + order);
