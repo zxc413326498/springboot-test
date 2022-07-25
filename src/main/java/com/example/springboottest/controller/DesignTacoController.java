@@ -62,6 +62,7 @@ public class DesignTacoController {
             return getIngredients(model);
         }
         Taco savedTaco=tacoDao.save(taco);
+        order.addDesign(savedTaco);
 
         log.info("Processing design-savedTaco: " + savedTaco);
         return "redirect:/orders/current";

@@ -42,7 +42,7 @@ public class TacoDaoImpl extends BaseDao implements TacoDao {
         PreparedStatementCreatorFactory pscf=new PreparedStatementCreatorFactory(
                 "insert into Taco(name,createdAt) values (?,?)",
                 Types.VARCHAR,Types.TIMESTAMP);
-        //
+        //使用mysql时需要手动设置返回构造的key
         pscf.setReturnGeneratedKeys(true);
         //
         PreparedStatementCreator psc=pscf
